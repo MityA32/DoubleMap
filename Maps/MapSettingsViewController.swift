@@ -9,21 +9,33 @@ import UIKit
 
 class MapSettingsViewController: UIViewController {
 
+    
+    @IBOutlet private weak var mapProviderControl: UISegmentedControl!
+    @IBOutlet private weak var mapTypeControl: UISegmentedControl!
+    
+    weak var delegate: UniversalMapViewController?
+    
+    var mapSettings: UniversalMapService.Configuration?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        mapProviderControl.selectedSegmentIndex = mapSettings?.mapProvider.rawValue ?? 0
+        mapTypeControl.selectedSegmentIndex = mapSettings?.mapType.rawValue ?? 0
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func mapProviderSwitch(_ sender: UISegmentedControl) {
+        delegate?.updateMapProvider(by: sender.selectedSegmentIndex)
     }
-    */
+    
+    
+    @IBAction func mapTypeSwitch(_ sender: UISegmentedControl) {
+        delegate?.updateMapType(by: sender.selectedSegmentIndex)
+    }
+    
+    
+    
+    
 
 }

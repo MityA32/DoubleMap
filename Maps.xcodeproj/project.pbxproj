@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		930464D12900275000034EAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930464D02900275000034EAD /* AppDelegate.swift */; };
 		930464D32900275000034EAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930464D22900275000034EAD /* SceneDelegate.swift */; };
-		930464D52900275000034EAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930464D42900275000034EAD /* ViewController.swift */; };
+		930464D52900275000034EAD /* UniversalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930464D42900275000034EAD /* UniversalMapViewController.swift */; };
 		930464D82900275000034EAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930464D62900275000034EAD /* Main.storyboard */; };
 		930464DA2900275300034EAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 930464D92900275300034EAD /* Assets.xcassets */; };
 		930464DD2900275300034EAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930464DB2900275300034EAD /* LaunchScreen.storyboard */; };
+		9351DE2D29012EF90050067D /* UniversalMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351DE2C29012EF90050067D /* UniversalMapService.swift */; };
+		9351DE2F29012F030050067D /* UniversalMapProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351DE2E29012F030050067D /* UniversalMapProtocol.swift */; };
+		9351DE342902B9A50050067D /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9351DE332902B9A50050067D /* MapSettingsViewController.swift */; };
+		93898762290620FD00E6E5F5 /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93898761290620FD00E6E5F5 /* CoreLocationService.swift */; };
+		9C20ECAFB7D07A05260A3C99 /* Pods_Maps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749291BDB69E5EEDAF64CFD /* Pods_Maps.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22B5926C7F46DF95AB1ED727 /* Pods-Maps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps.debug.xcconfig"; path = "Target Support Files/Pods-Maps/Pods-Maps.debug.xcconfig"; sourceTree = "<group>"; };
+		5749291BDB69E5EEDAF64CFD /* Pods_Maps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A4A104A93E26E699404D47C /* Pods-Maps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps.release.xcconfig"; path = "Target Support Files/Pods-Maps/Pods-Maps.release.xcconfig"; sourceTree = "<group>"; };
 		930464CD2900275000034EAD /* Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		930464D02900275000034EAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		930464D22900275000034EAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		930464D42900275000034EAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		930464D42900275000034EAD /* UniversalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMapViewController.swift; sourceTree = "<group>"; };
 		930464D72900275000034EAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		930464D92900275300034EAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		930464DC2900275300034EAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		930464DE2900275300034EAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9351DE2C29012EF90050067D /* UniversalMapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalMapService.swift; sourceTree = "<group>"; };
+		9351DE2E29012F030050067D /* UniversalMapProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalMapProtocol.swift; sourceTree = "<group>"; };
+		9351DE332902B9A50050067D /* MapSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
+		93898761290620FD00E6E5F5 /* CoreLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C20ECAFB7D07A05260A3C99 /* Pods_Maps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31BD6C9E85FD768C38A65198 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				22B5926C7F46DF95AB1ED727 /* Pods-Maps.debug.xcconfig */,
+				7A4A104A93E26E699404D47C /* Pods-Maps.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5B647BCBC879B7936290FEF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5749291BDB69E5EEDAF64CFD /* Pods_Maps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		930464C42900275000034EAD = {
 			isa = PBXGroup;
 			children = (
 				930464CF2900275000034EAD /* Maps */,
 				930464CE2900275000034EAD /* Products */,
+				31BD6C9E85FD768C38A65198 /* Pods */,
+				5B647BCBC879B7936290FEF7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +88,27 @@
 		930464CF2900275000034EAD /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				9351DE30290177550050067D /* Services */,
 				930464D02900275000034EAD /* AppDelegate.swift */,
 				930464D22900275000034EAD /* SceneDelegate.swift */,
-				930464D42900275000034EAD /* ViewController.swift */,
+				930464D42900275000034EAD /* UniversalMapViewController.swift */,
+				9351DE332902B9A50050067D /* MapSettingsViewController.swift */,
 				930464D62900275000034EAD /* Main.storyboard */,
 				930464D92900275300034EAD /* Assets.xcassets */,
 				930464DB2900275300034EAD /* LaunchScreen.storyboard */,
 				930464DE2900275300034EAD /* Info.plist */,
 			);
 			path = Maps;
+			sourceTree = "<group>";
+		};
+		9351DE30290177550050067D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9351DE2C29012EF90050067D /* UniversalMapService.swift */,
+				9351DE2E29012F030050067D /* UniversalMapProtocol.swift */,
+				93898761290620FD00E6E5F5 /* CoreLocationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +118,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 930464E12900275300034EAD /* Build configuration list for PBXNativeTarget "Maps" */;
 			buildPhases = (
+				BA76657DC07125459FA16D0B /* [CP] Check Pods Manifest.lock */,
 				930464C92900275000034EAD /* Sources */,
 				930464CA2900275000034EAD /* Frameworks */,
 				930464CB2900275000034EAD /* Resources */,
+				06EB0B7B3E26CF626BCABFB2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -133,13 +179,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06EB0B7B3E26CF626BCABFB2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Maps/Pods-Maps-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Maps/Pods-Maps-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Maps/Pods-Maps-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA76657DC07125459FA16D0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Maps-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		930464C92900275000034EAD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				930464D52900275000034EAD /* ViewController.swift in Sources */,
+				9351DE2D29012EF90050067D /* UniversalMapService.swift in Sources */,
+				9351DE2F29012F030050067D /* UniversalMapProtocol.swift in Sources */,
+				930464D52900275000034EAD /* UniversalMapViewController.swift in Sources */,
+				93898762290620FD00E6E5F5 /* CoreLocationService.swift in Sources */,
 				930464D12900275000034EAD /* AppDelegate.swift in Sources */,
+				9351DE342902B9A50050067D /* MapSettingsViewController.swift in Sources */,
 				930464D32900275000034EAD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +374,7 @@
 		};
 		930464E22900275300034EAD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22B5926C7F46DF95AB1ED727 /* Pods-Maps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -290,6 +383,8 @@
 				DEVELOPMENT_TEAM = VNU8KKW4GG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Maps/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please, give you location to have better experience with app";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, give you location to have better experience with app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -310,6 +405,7 @@
 		};
 		930464E32900275300034EAD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A4A104A93E26E699404D47C /* Pods-Maps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,6 +414,8 @@
 				DEVELOPMENT_TEAM = VNU8KKW4GG;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Maps/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please, give you location to have better experience with app";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, give you location to have better experience with app";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

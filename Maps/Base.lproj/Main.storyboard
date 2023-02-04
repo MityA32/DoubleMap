@@ -1,24 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wpg-1h-chh">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Universal Map View Controller-->
+        <scene sceneID="1Xn-gi-tjs">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="Wpg-1h-chh" customClass="UniversalMapViewController" customModule="Maps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1pH-yB-nU1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="gr5-cL-ii2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <segue destination="vsI-WK-7Po" kind="presentation" identifier="map_settings" id="2K6-2v-8xl"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CU0-X6-udb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="882" y="112"/>
+        </scene>
+        <!--Map Settings View Controller-->
+        <scene sceneID="v9G-A1-Vye">
+            <objects>
+                <viewController storyboardIdentifier="MapSettingsViewController" id="vsI-WK-7Po" customClass="MapSettingsViewController" customModule="Maps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N2Y-5J-5P5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THk-WB-BEc">
+                                <rect key="frame" x="187.66666666666666" y="32" width="38.666666666666657" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Provider" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIT-uj-qi9">
+                                <rect key="frame" x="30.333333333333332" y="78" width="63.333333333333343" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TnJ-72-o7Q">
+                                <rect key="frame" x="101.66666666666667" y="120" width="248.33333333333331" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="sDx-HG-qvr"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Normal"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapTypeSwitch:" destination="vsI-WK-7Po" eventType="valueChanged" id="Yzl-lQ-NBJ"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-Nk-Shm">
+                                <rect key="frame" x="56.333333333333329" y="125.66666666666669" width="37.333333333333329" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="grw-C6-qfY">
+                                <rect key="frame" x="101.66666666666667" y="72" width="248.33333333333331" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="0OO-7K-gx6"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Apple"/>
+                                    <segment title="Google"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapProviderSwitch:" destination="vsI-WK-7Po" eventType="valueChanged" id="w17-Xx-mrQ"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="oJ5-t6-OYh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TnJ-72-o7Q" firstAttribute="width" secondItem="N2Y-5J-5P5" secondAttribute="width" multiplier="0.6" id="1iU-yJ-uMg"/>
+                            <constraint firstItem="TnJ-72-o7Q" firstAttribute="leading" secondItem="grw-C6-qfY" secondAttribute="leading" id="COn-GR-p7q"/>
+                            <constraint firstItem="oJ5-t6-OYh" firstAttribute="trailing" secondItem="grw-C6-qfY" secondAttribute="trailing" constant="64" id="D9c-cA-FUv"/>
+                            <constraint firstItem="TnJ-72-o7Q" firstAttribute="leading" secondItem="SBH-Nk-Shm" secondAttribute="trailing" constant="8" id="NVo-1t-Pqc"/>
+                            <constraint firstItem="THk-WB-BEc" firstAttribute="centerX" secondItem="oJ5-t6-OYh" secondAttribute="centerX" id="RcC-dU-mrd"/>
+                            <constraint firstItem="grw-C6-qfY" firstAttribute="width" secondItem="N2Y-5J-5P5" secondAttribute="width" multiplier="0.6" id="UIU-py-0Li"/>
+                            <constraint firstItem="grw-C6-qfY" firstAttribute="top" secondItem="THk-WB-BEc" secondAttribute="bottom" constant="16" id="UqZ-hQ-2nV"/>
+                            <constraint firstItem="TnJ-72-o7Q" firstAttribute="top" secondItem="grw-C6-qfY" secondAttribute="bottom" constant="16" id="XNV-mT-PPZ"/>
+                            <constraint firstItem="grw-C6-qfY" firstAttribute="leading" secondItem="UIT-uj-qi9" secondAttribute="trailing" constant="8" id="dun-yj-7sw"/>
+                            <constraint firstItem="SBH-Nk-Shm" firstAttribute="centerY" secondItem="TnJ-72-o7Q" secondAttribute="centerY" id="pXY-e8-4pH"/>
+                            <constraint firstItem="UIT-uj-qi9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oJ5-t6-OYh" secondAttribute="leading" constant="16" id="qqp-pi-scX"/>
+                            <constraint firstItem="UIT-uj-qi9" firstAttribute="centerY" secondItem="grw-C6-qfY" secondAttribute="centerY" id="qwm-OM-BzH"/>
+                            <constraint firstItem="THk-WB-BEc" firstAttribute="top" secondItem="oJ5-t6-OYh" secondAttribute="top" constant="32" id="tKy-Fb-C1V"/>
+                            <constraint firstItem="SBH-Nk-Shm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oJ5-t6-OYh" secondAttribute="leading" constant="16" id="zfO-1p-zoi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapProviderControl" destination="grw-C6-qfY" id="oGR-Py-2KY"/>
+                        <outlet property="mapTypeControl" destination="TnJ-72-o7Q" id="0DJ-S4-eRQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkB-7q-mKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="112"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

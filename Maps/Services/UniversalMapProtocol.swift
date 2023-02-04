@@ -27,10 +27,12 @@ extension MKMapView: UniversalMapProvider {
     
     var universalMapConfiguration: UniversalMapService.Configuration {
         get {
-            .init(mapType:
+            .init(
+                mapProvider: .apple,
+                mapType:
                     self.mapType == .standard || self.mapType == .mutedStandard ? .normal :
                     self.mapType == .hybrid || self.mapType == .hybridFlyover ? .hybrid :
-                    .satellite
+                                    .satellite
             )
         }
         set {
@@ -59,7 +61,8 @@ extension GMSMapView: UniversalMapProvider {
     
     var universalMapConfiguration: UniversalMapService.Configuration {
         get {
-            .init(mapType:
+            .init(mapProvider: .google,
+                  mapType:
                     self.mapType == .normal ? .normal :
                     self.mapType == .hybrid ? .hybrid :
                     .satellite

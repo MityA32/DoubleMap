@@ -16,7 +16,7 @@ protocol UniversalMapServiceDelegate: AnyObject {
     
 }
 
-final class UniversalMapService: NSObject {
+final class UniversalMapService: NSObject, CLLocationManagerDelegate {
     
     weak var delegate: UniversalMapServiceDelegate?
     
@@ -25,6 +25,7 @@ final class UniversalMapService: NSObject {
     
     init(_ defaultType: UniversalMapProvider.Type = MKMapView.self) {
         super.init()
+        
         switchProvider(to: defaultType)
     }
     
@@ -35,7 +36,7 @@ final class UniversalMapService: NSObject {
         mapView = provider.init()
         
         if let lastConfiguration = lastConfiguration {
-            mapView.universalMapConfiguration = lastConfiguration
+            mapView.universalMapConfiguration.mapType = lastConfiguration.mapType
         }
         
         if let mapView = mapView as? UIView {
@@ -51,6 +52,23 @@ final class UniversalMapService: NSObject {
         }
     }
     
+    func showCurrentLocation(of provider: UniversalMapProvider.Type) {
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: 10000, longitudinalMeters: 10000)
+        if mapView.universalMapConfiguration.mapProvider == .apple {
+            guard let mapView = mapView as? MKMapView else { return }
+            mapView.setRegion(region, animated: true)
+        } else {
+            guard let mapView = mapView as? GMSMapView else { return }
+            mapView
+        }
+    }
+    
     func switchMapType(to type: Configuration.MapType) {
         mapView.universalMapConfiguration.mapType = type
     }
@@ -61,6 +79,13 @@ final class UniversalMapService: NSObject {
     
     struct Configuration {
         
+        enum MapProvider: Int {
+            
+            case apple
+            case google
+            
+        }
+        
         enum MapType: Int {
             
             case normal
@@ -69,6 +94,7 @@ final class UniversalMapService: NSObject {
             
         }
         
+        var mapProvider: MapProvider = .apple
         var mapType: MapType = .normal
         
     }
