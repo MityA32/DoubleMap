@@ -55,7 +55,9 @@ extension MKMapView: UniversalMapProvider {
     
     func centerUserLocation() {
         LocationManager.shared.getUserLocation { [unowned self] location in
-            self.setRegion(MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+            showsUserLocation = true
+            self.setCamera(MKMapCamera(lookingAtCenter: location.coordinate, fromEyeCoordinate: location.coordinate, eyeAltitude: CLongDouble(5000)), animated: true)
+
         }
     }
     
