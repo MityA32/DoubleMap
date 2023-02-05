@@ -18,6 +18,7 @@ protocol UniversalMapProvider {
     init()
     
     func addPin(with title: String, to coordinate: CLLocationCoordinate2D)
+    func centerUserLocation()
     
 }
 
@@ -52,6 +53,13 @@ extension MKMapView: UniversalMapProvider {
         addAnnotation(annotation)
     }
     
+    func centerUserLocation() {
+        LocationManager.shared.getUserLocation { [unowned self] location in
+            self.setRegion(MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+        }
+    }
+    
+    
 }
 
 #if canImport(GoogleMaps)
@@ -81,8 +89,16 @@ extension GMSMapView: UniversalMapProvider {
         let marker = GMSMarker(position: coordinate)
         marker.title = title
         marker.map = self
-        
     }
+    
+    func centerUserLocation() {
+        LocationManager.shared.getUserLocation { [unowned self] location in
+            camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+            isMyLocationEnabled = true
+            self.animate(toLocation: location.coordinate)
+        }
+    }
+    
     
 }
 #endif

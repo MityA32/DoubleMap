@@ -22,11 +22,46 @@ final class UniversalMapService: NSObject, CLLocationManagerDelegate {
     
     private(set) var container = UIView()
     private(set) var mapView: UniversalMapProvider!
+//    private(set) var locationManager = CLLocationManager()
+ 
     
     init(_ defaultType: UniversalMapProvider.Type = MKMapView.self) {
         super.init()
         
         switchProvider(to: defaultType)
+
+    }
+    
+
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print("came here")
+
+        switch manager.authorizationStatus {
+            case .authorizedWhenInUse:  // Location services are available.
+                enableLocationFeatures()
+                break
+
+            case .restricted, .denied:
+                print("it's denied")// Location services currently unavailable.
+            disableLocationFeatures(to: manager)
+                break
+
+            case .notDetermined:        // Authorization not determined yet.
+                manager.requestWhenInUseAuthorization()
+                break
+
+            default:
+                break
+            }
+    }
+    
+    func enableLocationFeatures() {
+        
+    }
+    
+    func disableLocationFeatures(to manager: CLLocationManager) {
+        
     }
     
     func switchProvider(to provider: UniversalMapProvider.Type) {
@@ -52,23 +87,6 @@ final class UniversalMapService: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    func showCurrentLocation(of provider: UniversalMapProvider.Type) {
-        
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: 10000, longitudinalMeters: 10000)
-        if mapView.universalMapConfiguration.mapProvider == .apple {
-            guard let mapView = mapView as? MKMapView else { return }
-            mapView.setRegion(region, animated: true)
-        } else {
-            guard let mapView = mapView as? GMSMapView else { return }
-            mapView
-        }
-    }
-    
     func switchMapType(to type: Configuration.MapType) {
         mapView.universalMapConfiguration.mapType = type
     }
@@ -77,6 +95,10 @@ final class UniversalMapService: NSObject, CLLocationManagerDelegate {
         mapView.addPin(with: title, to: coordinate)
     }
     
+    func centerUserLocation() {
+        mapView.centerUserLocation()
+    }
+        
     struct Configuration {
         
         enum MapProvider: Int {

@@ -22,8 +22,6 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
         button.tintColor = .systemGray
         button.layer.cornerRadius = 5
         button.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
-
-        
         return button
     }()
     
@@ -34,8 +32,6 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
         button.tintColor = .systemGray
         button.layer.cornerRadius = 5
         button.setImage(UIImage(systemName: "location.circle"), for: .normal)
-
-        
         return button
     }()
     
@@ -54,17 +50,9 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
         configureMap()
-        CoreLocationService.shared.getUserLocation {_ in
-            
-        }
-        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(UIView.endEditing(_:)))
-//        self.mapSerivce.container.addGestureRecognizer(tapGesture)
-        
-        
+
     }
     
     
@@ -125,16 +113,7 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
     }
     
     @objc func centerCurrentLocation(_ sender: UIButton) {
-        print("centered")
-        CoreLocationService.shared.getUserLocation { [weak self] location in
-            
-            guard let self else { return }
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion.init(center: center, latitudinalMeters: 10000, longitudinalMeters: 10000)
-            
-            self.moveMapCamera(at: center)
-            
-        }
+        mapSerivce.centerUserLocation()
     }
     
     func moveMapCamera(at cordinate: CLLocationCoordinate2D, animated: Bool = false) {
@@ -145,8 +124,7 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
         if let map = mapSerivce.mapView as? MKMapView {
             map.setCamera(camera, animated: animated)
         }
-        
-        
+
     }
     
     func updateMapProvider(by index: Int) {
@@ -176,3 +154,22 @@ extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
+
+
+//                    let restrictedLocationAlert = UIAlertController(title: "Alert", message: "Provide location to see where you are", preferredStyle: .alert)
+//                    restrictedLocationAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+//                        switch action.style {
+//                        case .default:
+//                            print("OK")
+//
+//                        case .cancel:
+//                            print("cancel")
+//                        case .destructive:
+//                            print("des")
+//                        @unknown default:
+//                            fatalError("Something unknown happend")
+//                        }
+//                    }))
+//                    DispatchQueue.main.async { [unowned self] in
+//                        self.present(restrictedLocationAlert, animated: true)
+//                    }
