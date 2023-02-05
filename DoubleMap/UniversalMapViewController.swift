@@ -113,6 +113,13 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
     }
     
     @objc func centerCurrentLocation(_ sender: UIButton) {
+        if LocationManager.shared.locationManager.authorizationStatus == .denied {
+            DispatchQueue.main.async { [unowned self] in
+                self.present(mapSerivce.disableLocationFeatures(), animated: true)
+            }
+            
+            return
+        }
         mapSerivce.centerUserLocation()
     }
     

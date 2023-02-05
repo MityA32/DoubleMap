@@ -56,7 +56,7 @@ extension MKMapView: UniversalMapProvider {
     func centerUserLocation() {
         LocationManager.shared.getUserLocation { [unowned self] location in
             showsUserLocation = true
-            self.setCamera(MKMapCamera(lookingAtCenter: location.coordinate, fromEyeCoordinate: location.coordinate, eyeAltitude: CLongDouble(5000)), animated: true)
+            self.setCamera(MKMapCamera(lookingAtCenter: location.coordinate, fromEyeCoordinate: location.coordinate, eyeAltitude: CLLocationDistance(CLongDouble(5000))), animated: true)
 
         }
     }
@@ -95,9 +95,10 @@ extension GMSMapView: UniversalMapProvider {
     
     func centerUserLocation() {
         LocationManager.shared.getUserLocation { [unowned self] location in
-            camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
             isMyLocationEnabled = true
             self.animate(toLocation: location.coordinate)
+            camera = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+            
         }
     }
     

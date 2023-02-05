@@ -24,7 +24,7 @@
 		22B5926C7F46DF95AB1ED727 /* Pods-Maps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps.debug.xcconfig"; path = "Target Support Files/Pods-Maps/Pods-Maps.debug.xcconfig"; sourceTree = "<group>"; };
 		5749291BDB69E5EEDAF64CFD /* Pods_Maps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A4A104A93E26E699404D47C /* Pods-Maps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps.release.xcconfig"; path = "Target Support Files/Pods-Maps/Pods-Maps.release.xcconfig"; sourceTree = "<group>"; };
-		930464CD2900275000034EAD /* Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		930464CD2900275000034EAD /* DoubleMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubleMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		930464D02900275000034EAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		930464D22900275000034EAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		930464D42900275000034EAD /* UniversalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalMapViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		930464C42900275000034EAD = {
 			isa = PBXGroup;
 			children = (
-				930464CF2900275000034EAD /* Maps */,
+				930464CF2900275000034EAD /* DoubleMap */,
 				930464CE2900275000034EAD /* Products */,
 				31BD6C9E85FD768C38A65198 /* Pods */,
 				5B647BCBC879B7936290FEF7 /* Frameworks */,
@@ -80,12 +80,12 @@
 		930464CE2900275000034EAD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				930464CD2900275000034EAD /* Maps.app */,
+				930464CD2900275000034EAD /* DoubleMap.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		930464CF2900275000034EAD /* Maps */ = {
+		930464CF2900275000034EAD /* DoubleMap */ = {
 			isa = PBXGroup;
 			children = (
 				9351DE30290177550050067D /* Services */,
@@ -98,7 +98,7 @@
 				930464DB2900275300034EAD /* LaunchScreen.storyboard */,
 				930464DE2900275300034EAD /* Info.plist */,
 			);
-			path = Maps;
+			path = DoubleMap;
 			sourceTree = "<group>";
 		};
 		9351DE30290177550050067D /* Services */ = {
@@ -114,9 +114,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		930464CC2900275000034EAD /* Maps */ = {
+		930464CC2900275000034EAD /* DoubleMap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 930464E12900275300034EAD /* Build configuration list for PBXNativeTarget "Maps" */;
+			buildConfigurationList = 930464E12900275300034EAD /* Build configuration list for PBXNativeTarget "DoubleMap" */;
 			buildPhases = (
 				BA76657DC07125459FA16D0B /* [CP] Check Pods Manifest.lock */,
 				930464C92900275000034EAD /* Sources */,
@@ -128,9 +128,9 @@
 			);
 			dependencies = (
 			);
-			name = Maps;
+			name = DoubleMap;
 			productName = Maps;
-			productReference = 930464CD2900275000034EAD /* Maps.app */;
+			productReference = 930464CD2900275000034EAD /* DoubleMap.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -148,7 +148,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 930464C82900275000034EAD /* Build configuration list for PBXProject "Maps" */;
+			buildConfigurationList = 930464C82900275000034EAD /* Build configuration list for PBXProject "DoubleMap" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,7 +161,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				930464CC2900275000034EAD /* Maps */,
+				930464CC2900275000034EAD /* DoubleMap */,
 			);
 		};
 /* End PBXProject section */
@@ -382,7 +382,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VNU8KKW4GG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Maps/Info.plist;
+				INFOPLIST_FILE = DoubleMap/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please, give you location to have better experience with app";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, give you location to see you on map";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -413,7 +413,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VNU8KKW4GG;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Maps/Info.plist;
+				INFOPLIST_FILE = DoubleMap/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please, give you location to have better experience with app";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, give you location to see you on map";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -437,7 +437,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		930464C82900275000034EAD /* Build configuration list for PBXProject "Maps" */ = {
+		930464C82900275000034EAD /* Build configuration list for PBXProject "DoubleMap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				930464DF2900275300034EAD /* Debug */,
@@ -446,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		930464E12900275300034EAD /* Build configuration list for PBXNativeTarget "Maps" */ = {
+		930464E12900275300034EAD /* Build configuration list for PBXNativeTarget "DoubleMap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				930464E22900275300034EAD /* Debug */,

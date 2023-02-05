@@ -22,7 +22,6 @@ final class UniversalMapService: NSObject, CLLocationManagerDelegate {
     
     private(set) var container = UIView()
     private(set) var mapView: UniversalMapProvider!
-//    private(set) var locationManager = CLLocationManager()
  
     
     init(_ defaultType: UniversalMapProvider.Type = MKMapView.self) {
@@ -44,7 +43,7 @@ final class UniversalMapService: NSObject, CLLocationManagerDelegate {
 
             case .restricted, .denied:
                 print("it's denied")// Location services currently unavailable.
-            disableLocationFeatures(to: manager)
+            
                 break
 
             case .notDetermined:        // Authorization not determined yet.
@@ -60,8 +59,25 @@ final class UniversalMapService: NSObject, CLLocationManagerDelegate {
         
     }
     
-    func disableLocationFeatures(to manager: CLLocationManager) {
-        
+    func disableLocationFeatures() -> UIAlertController {
+        let alertController = UIAlertController (title: "Title", message: "Go to Settings?", preferredStyle: .alert)
+
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+
+        return alertController
     }
     
     func switchProvider(to provider: UniversalMapProvider.Type) {
