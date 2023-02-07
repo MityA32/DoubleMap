@@ -13,6 +13,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     static let shared = LocationManager()
     
+    
     let locationManager = CLLocationManager()
     var completion: ((CLLocation) -> Void)?
     
@@ -29,4 +30,20 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         completion?(location)
         locationManager.stopUpdatingLocation()
     }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+            case .authorizedWhenInUse, .authorizedAlways:// Location services are available.
+                manager.startUpdatingLocation()
+                break
+            case .restricted, .denied:
+                break
+            case .notDetermined:
+                manager.requestWhenInUseAuthorization()
+                break
+            default:
+                break
+        }
+    }
+    
 }

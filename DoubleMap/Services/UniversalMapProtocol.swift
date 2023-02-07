@@ -1,10 +1,3 @@
-//
-//  UniversalMapProtocol.swift
-//  L2_project
-//
-//  Created by Ihor Malovanyi on 17.10.2022.
-//
-
 import MapKit
 #if canImport(GoogleMaps)
 import GoogleMaps

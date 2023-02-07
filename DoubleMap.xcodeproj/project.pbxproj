@@ -88,11 +88,10 @@
 		930464CF2900275000034EAD /* DoubleMap */ = {
 			isa = PBXGroup;
 			children = (
+				93581A8C298FEBD1005DFE72 /* VCs */,
 				9351DE30290177550050067D /* Services */,
 				930464D02900275000034EAD /* AppDelegate.swift */,
 				930464D22900275000034EAD /* SceneDelegate.swift */,
-				930464D42900275000034EAD /* UniversalMapViewController.swift */,
-				9351DE332902B9A50050067D /* MapSettingsViewController.swift */,
 				930464D62900275000034EAD /* Main.storyboard */,
 				930464D92900275300034EAD /* Assets.xcassets */,
 				930464DB2900275300034EAD /* LaunchScreen.storyboard */,
@@ -109,6 +108,15 @@
 				931D0DC4298EBE370031FC19 /* LocationManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		93581A8C298FEBD1005DFE72 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				930464D42900275000034EAD /* UniversalMapViewController.swift */,
+				9351DE332902B9A50050067D /* MapSettingsViewController.swift */,
+			);
+			path = VCs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +392,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoubleMap/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please, give you location to have better experience with app";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please, give you location to have better experience with app";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, give you location to see you on map";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -415,6 +424,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DoubleMap/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please, give you location to have better experience with app";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please, give you location to have better experience with app";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please, give you location to see you on map";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

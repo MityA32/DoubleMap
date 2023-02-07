@@ -15,7 +15,7 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
 
     private var mapSerivce = UniversalMapService()
     
-    var settingsButton: UIButton = {
+    let settingsButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemBackground
@@ -25,7 +25,7 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
         return button
     }()
     
-    var centerCameraButton: UIButton = {
+    let centerCameraButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemBackground
@@ -35,7 +35,7 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
         return button
     }()
     
-    var mapTextField: UITextField = {
+    let mapTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 2.0))
@@ -48,16 +48,34 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
         return textField
     }()
     
+    func openSettings() -> UIAlertController {
+        let alertController = UIAlertController (title: "Alert", message: "Go to Settings for providing access for location?", preferredStyle: .alert)
+
+        let settingsAction = UIAlertAction(
+            title: "Go to Settings",
+            style: .default)
+            { (_) -> Void in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+                                    UIApplication.shared.canOpenURL(settingsUrl)
+            else {
+                return
+            }
+            UIApplication.shared.open(settingsUrl)
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Not now", style: .cancel)
+        alertController.addAction(cancelAction)
+
+        return alertController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        LocationManager.shared.locationManager.requestWhenInUseAuthorization()
         configureMap()
-
     }
-    
-    
-    
-    
+
     func configureMap() {
         view.addSubview(mapSerivce.container)
         view.addSubview(mapTextField)
@@ -113,25 +131,12 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
     }
     
     @objc func centerCurrentLocation(_ sender: UIButton) {
-        if LocationManager.shared.locationManager.authorizationStatus == .denied {
-            DispatchQueue.main.async { [unowned self] in
-                self.present(mapSerivce.disableLocationFeatures(), animated: true)
-            }
-            
-            return
-        }
+        let authotizationStatus = LocationManager.shared.locationManager.authorizationStatus
+        guard authotizationStatus == .authorizedAlways ||
+              authotizationStatus == .authorizedWhenInUse ||
+              authotizationStatus == .authorized
+        else { present(openSettings(), animated: true); return }
         mapSerivce.centerUserLocation()
-    }
-    
-    func moveMapCamera(at cordinate: CLLocationCoordinate2D, animated: Bool = false) {
-        let camera = MKMapCamera()
-        camera.centerCoordinate = cordinate
-        camera.pitch = 0
-        camera.altitude = 9000
-        if let map = mapSerivce.mapView as? MKMapView {
-            map.setCamera(camera, animated: animated)
-        }
-
     }
     
     func updateMapProvider(by index: Int) {
@@ -144,8 +149,6 @@ class UniversalMapViewController: UIViewController, UniversalMapSettings {
     
     
 }
-
-
 
 protocol UniversalMapSettings {
     func updateMapProvider(by segmentIndex: Int)
@@ -163,20 +166,4 @@ extension UIImage {
 }
 
 
-//                    let restrictedLocationAlert = UIAlertController(title: "Alert", message: "Provide location to see where you are", preferredStyle: .alert)
-//                    restrictedLocationAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-//                        switch action.style {
-//                        case .default:
-//                            print("OK")
-//
-//                        case .cancel:
-//                            print("cancel")
-//                        case .destructive:
-//                            print("des")
-//                        @unknown default:
-//                            fatalError("Something unknown happend")
-//                        }
-//                    }))
-//                    DispatchQueue.main.async { [unowned self] in
-//                        self.present(restrictedLocationAlert, animated: true)
-//                    }
+

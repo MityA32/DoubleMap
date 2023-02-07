@@ -1,10 +1,3 @@
-//
-//  UniversalMapService.swift
-//  L2_project
-//
-//  Created by Ihor Malovanyi on 17.10.2022.
-//
-
 import MapKit
 #if canImport(GoogleMaps)
 import GoogleMaps
@@ -16,7 +9,7 @@ protocol UniversalMapServiceDelegate: AnyObject {
     
 }
 
-final class UniversalMapService: NSObject, CLLocationManagerDelegate {
+final class UniversalMapService: NSObject {
     
     weak var delegate: UniversalMapServiceDelegate?
     
@@ -29,56 +22,7 @@ final class UniversalMapService: NSObject, CLLocationManagerDelegate {
         
         switchProvider(to: defaultType)
 
-    }
-    
-
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print("came here")
-
-        switch manager.authorizationStatus {
-            case .authorizedWhenInUse:  // Location services are available.
-                enableLocationFeatures()
-                break
-
-            case .restricted, .denied:
-                print("it's denied")// Location services currently unavailable.
-            
-                break
-
-            case .notDetermined:        // Authorization not determined yet.
-                manager.requestWhenInUseAuthorization()
-                break
-
-            default:
-                break
-            }
-    }
-    
-    func enableLocationFeatures() {
-        
-    }
-    
-    func disableLocationFeatures() -> UIAlertController {
-        let alertController = UIAlertController (title: "Title", message: "Go to Settings?", preferredStyle: .alert)
-
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)") // Prints true
-                })
-            }
-        }
-        alertController.addAction(settingsAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        alertController.addAction(cancelAction)
-
-        return alertController
-    }
+    }    
     
     func switchProvider(to provider: UniversalMapProvider.Type) {
         let lastConfiguration = mapView?.universalMapConfiguration
